@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Star Wars Person Table</title>
+    <title>Star Wars Movie Table</title>
     <style>
-     
         body {
             background-color: #000;
             color: #ffe81f;
@@ -34,7 +33,7 @@
         tr:nth-child(even) {
             background-color: #111;
         }
-        input[type="text"], input[type="date"] {
+        input[type="text"], input[type="date"], input[type="number"] {
             padding: 8px;
             margin: 5px;
             border: none;
@@ -56,8 +55,6 @@
             background-color: #fff;
             color: #000;
         }
-
-       
         #p5Canvas {
             position: fixed;
             bottom: 0;
@@ -65,50 +62,44 @@
             z-index: 1000;
         }
     </style>
-    <script src="/static/p5.min.js"></script>
-    <script src="/static/jedi.js"></script>
 </head>
 <body>
 
-    <h1>Star Wars Person Table</h1>
+    <h1>Star Wars Movies</h1>
 
     <table>
         <tr>
-            <th>ID</th>
-            <th>FirstName</th>
-            <th>LastName</th>
-            <th>Birthdate</th>
-            <th>Maintainence</th>
-
+            <th>Title</th>
         </tr>
-        {% for row in collection %}
+        {% for movie in movies %}
         <tr>
-            <td>{{row[0]}}</td>
-            <td>{{row[1]}}</td>
-            <td>{{row[2]}}</td>
-            <td>{{row[3]}}</td>
-            <td><a href="?delete=true&id={{row[0]}}">Delete</a><br />
-                <a href="/updatePerson?id={{row[0]}}">Change</a>
-            </td>
+            <td><a href="{{ url_for('show_characters', film_id=movie[0]) }}">{{ movie[1] }}</a></td>
         </tr>
-        
-     
         {% endfor %}
     </table>
-
-    <h2>Add a New Person</h2>
-    <form>
-        <label for="firstName">First Name:</label>
-        <input type="text" id="firstName" name="firstname" required>
-        <label for="lastName">Last Name:</label>
-        <input type="text" id="lastName" name="lastname" required>
-        <label for="birthdate">Birthdate:</label>
-        <input type="date" id="birthdate" name="birthdate" required>
+    <h2>Add a New Movie</h2>
+    <form method="POST" action="/add_movie">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <label for="releaseDate">Release Date:</label>
+        <input type="date" id="releaseDate" name="releaseDate" required>
+        <label for="runtime">Run Time (in minutes):</label>
+        <input type="number" id="runtime" name="runtime" required>
         <br>
-        <input type="submit" value="Add Person">
+        <input type="submit" value="Add Movie">
     </form>
+    <button class="tiefighter-button" id="tiefighterButton">Go to Person</button>
+    <div id="p5Canvas"></div> 
+    <script src="/static/p5.min.js"></script> 
+    <script src="/static/tiefighter.js"></script>
+    <script src="/static/p5.min.js"></script>
+    <script src="/static/tiefighter.js"></script>
 
-    
-    
+    <script>
+        document.getElementById('tiefighterButton').addEventListener('click', function() {
+            window.location.href = "/person";  
+        });
+    </script>
+
 </body>
 </html>

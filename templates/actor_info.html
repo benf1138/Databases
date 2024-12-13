@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actor Information</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ffe81f;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-family: 'Star Jedi', sans-serif;
+            color: #ffe81f;
+            text-shadow: 2px 2px 4px #000, 0 0 25px #fff, 0 0 5px #ff0000;
+            font-size: 48px;
+        }
+        p {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        strong {
+            color: #ffe81f;
+            font-size: 22px;
+        }
+        .container {
+            background: url('https://www.starwars.com/sites/default/files/styles/1600x900/public/2022/05/sw11_001_00-hero_tall.jpg?itok=AnpnwMf6') no-repeat center center fixed;
+            background-size: cover;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+        .actor-info {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+        }
+        .actor-info p {
+            color: #fff;
+        }
+        .actor-info strong {
+            color: #ffe81f;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .button {
+            background-color: #ffe81f;
+            color: #000;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #fff;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Actor Information</h1>
+        <div class="actor-info">
+            <p><strong>Character Name:</strong> {{ actor_info[0] }}</p>
+            <p><strong>Actor's First Name:</strong> {{ actor_info[1] }}</p>
+            <p><strong>Actor's Last Name:</strong> {{ actor_info[2] }}</p>
+            <p><strong>First Film:</strong> {{ actor_info[3] }}</p>
+            <p><strong>Favorite Color:</strong> {{ actor_info[4] }}</p>
+            <p><strong>Favorite Genre:</strong> {{ actor_info[5] }}</p>
+        </div>
+        <a href="/" class="button">Back to Movies</a>
+    </div>
+
+</body>
+</html>
